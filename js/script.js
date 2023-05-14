@@ -56,10 +56,15 @@ function playGame(playerChoice) {
   // Kolla om någon har vunnit
   if (playerScore === 3) {
     showWinner(playerName);
-   
+    setTimeout(() => {
+      restartGame();
+    }, 3000); 
   } else if (computerScore === 3) {
     showWinner("Dator");
-    
+    setTimeout(() => {
+      restartGame();
+    }, 3000); 
+    return;
   }
 }
 
@@ -88,8 +93,6 @@ function showWinner(winnerName) {
 function restartGame() {
   playerScore = 0;
   computerScore = 0;
-  playerName = "";
-  playerNameInput.value = "";
   winnerDisplay.innerText = "";
   playerScoreDisplay.innerText = "Spelare: 0";
   computerScoreDisplay.innerText = "Dator: 0";
