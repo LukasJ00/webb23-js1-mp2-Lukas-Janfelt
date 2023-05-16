@@ -12,12 +12,12 @@ const computerScoreDisplay = document.getElementById("computer-score");
 const restartButton = document.getElementById("restart");
 const winnerDisplay = document.getElementById("winner");
 
-// Lyssna på namninput
+// namninput event
 playerNameInput.addEventListener("input", (event) => {
     playerName = event.target.value;
   });
 
-// Lyssna på knappklick
+// knappklick event
 rockButton.addEventListener("click", (event) => {
   event.preventDefault();
   playGame("sten");
@@ -31,17 +31,17 @@ paperButton.addEventListener("click", (event) => {
   playGame("påse");
 });
 
-// Lyssna på starta om-knappen
+// starta om-knappen
 restartButton.addEventListener("click", () => restartGame());
 
 function playGame(playerChoice) {
   const choices = ["sten", "sax", "påse"];
   const computerChoice = choices[Math.floor(Math.random() * choices.length)];
 
-  // Visa spelarens och datorns val
+  // visa spelarens och datorns val
   document.getElementById("choices").innerText = `${playerName}: ${playerChoice} | Dator: ${computerChoice}`;
 
-  // Uppdatera poängen baserat på vinnare
+  // uppdatera poängen baserat på vinnare
   const winner = determineWinner(playerChoice, computerChoice);
   if (winner === "player") {
     playerScore++;
@@ -49,25 +49,26 @@ function playGame(playerChoice) {
     computerScore++;
   }
 
-  // Visa poängen
+  // visa poängen
   playerScoreDisplay.innerText = `Spelare: ${playerScore}`;
   computerScoreDisplay.innerText = `Dator: ${computerScore}`;
 
-  // Kolla om någon har vunnit
+  // kolla om någon har vunnit
   if (playerScore === 3) {
     showWinner(playerName);
     setTimeout(() => {
       restartGame();
-    }, 3000); 
+    }, 3000);   // 3 sek till omstart
   } else if (computerScore === 3) {
     showWinner("Dator");
     setTimeout(() => {
       restartGame();
-    }, 3000); 
+    }, 3000);  // 3 sek till omstart
     return;
   }
 }
 
+//regler
 function determineWinner(playerChoice, computerChoice) {
   if (
     (playerChoice === "sten" && computerChoice === "sax") ||
@@ -86,10 +87,12 @@ function determineWinner(playerChoice, computerChoice) {
   }
 }
 
+//visa vinnaren
 function showWinner(winnerName) {
   winnerDisplay.innerText = `${winnerName} vann!`;
 }
 
+//starta om spelet
 function restartGame() {
   playerScore = 0;
   computerScore = 0;
