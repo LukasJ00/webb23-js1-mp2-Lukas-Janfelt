@@ -66,8 +66,7 @@ function playGame(playerChoice) {
       restartGame();
     }, 3000);  // 3 sek till omstart
     return;
-  }
-}
+  }}
 
 //regler
 function determineWinner(playerChoice, computerChoice) {
@@ -85,8 +84,7 @@ function determineWinner(playerChoice, computerChoice) {
     return "computer";
   } else {
     return "tie";
-  }
-}
+  }}
 
 //visa vinnaren
 function showWinner(winnerName) {
