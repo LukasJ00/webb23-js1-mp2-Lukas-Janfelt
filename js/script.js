@@ -1,3 +1,4 @@
+// grund värden vid omstart
 let playerScore = 0;
 let computerScore = 0;
 let playerName = "";
